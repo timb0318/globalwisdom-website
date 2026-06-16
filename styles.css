@@ -1,0 +1,892 @@
+:root {
+  --bg: #05070d;
+  --bg-soft: #0a1020;
+  --panel: rgba(12, 20, 38, 0.78);
+  --panel-solid: #0e172b;
+  --line: rgba(135, 172, 210, 0.2);
+  --text: #f4f8ff;
+  --muted: #a9b7cc;
+  --blue: #35c7ff;
+  --blue-deep: #1978ff;
+  --pink: #ff4fd8;
+  --green: #74f2c6;
+  --warning: #ffd166;
+  --max: 1180px;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(53, 199, 255, 0.18), transparent 32rem),
+    radial-gradient(circle at 10% 25%, rgba(255, 79, 216, 0.12), transparent 28rem),
+    linear-gradient(180deg, #05070d 0%, #08101d 48%, #05070d 100%);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--line);
+  background: rgba(5, 7, 13, 0.86);
+  backdrop-filter: blur(18px);
+}
+
+.nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: min(var(--max), calc(100% - 40px));
+  min-height: 74px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 190px;
+}
+
+.brand-mark {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(53, 199, 255, 0.5);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(53, 199, 255, 0.24), rgba(255, 79, 216, 0.12));
+  color: var(--blue);
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.brand-mark::after {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(53, 199, 255, 0.8);
+  content: "";
+}
+
+.brand-mark {
+  font-size: 0;
+}
+
+.brand-name {
+  display: block;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.brand-sub {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  place-items: center;
+  cursor: pointer;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  content: "";
+}
+
+.nav-toggle-label span::before {
+  transform: translateY(-7px);
+}
+
+.nav-toggle-label span::after {
+  transform: translateY(5px);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #dce8f7;
+  font-size: 14px;
+}
+
+.main-nav > a,
+.dropdown > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 11px;
+  border-radius: 8px;
+}
+
+.main-nav > a:hover,
+.dropdown:hover > a,
+.main-nav .active {
+  background: rgba(53, 199, 255, 0.12);
+  color: #ffffff;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  display: none;
+  min-width: 176px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 13, 25, 0.96);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: grid;
+}
+
+.dropdown-menu a {
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: var(--muted);
+}
+
+.dropdown-menu a:hover {
+  background: rgba(53, 199, 255, 0.12);
+  color: var(--text);
+}
+
+.lang {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 74px);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 7, 13, 0.94) 0%, rgba(5, 7, 13, 0.86) 42%, rgba(5, 7, 13, 0.18) 100%),
+    url("ANCHOR_女性工程師機械上身_機房主視覺.png") right center / auto 100% no-repeat;
+  content: "";
+}
+
+.hero::after {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(53, 199, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(53, 199, 255, 0.08) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(90deg, black, transparent 78%);
+  content: "";
+}
+
+.hero-inner,
+.section-inner {
+  position: relative;
+  width: min(var(--max), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.hero-inner {
+  display: grid;
+  align-items: center;
+  min-height: calc(100vh - 74px);
+  padding: 88px 0 60px;
+}
+
+.hero-copy {
+  max-width: 720px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 18px;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.eyebrow::before {
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--green);
+  box-shadow: 0 0 18px var(--green);
+  content: "";
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 760px;
+  font-size: clamp(42px, 7vw, 78px);
+}
+
+h2 {
+  font-size: clamp(30px, 4vw, 48px);
+}
+
+h3 {
+  font-size: 22px;
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.lead {
+  max-width: 660px;
+  margin-top: 24px;
+  color: #c7d7ee;
+  font-size: 19px;
+}
+
+.hero-actions,
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 1px solid rgba(53, 199, 255, 0.38);
+  border-radius: 8px;
+  color: var(--text);
+  font-weight: 800;
+}
+
+.button.primary {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+  color: #02111d;
+  box-shadow: 0 16px 38px rgba(25, 120, 255, 0.28);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 720px;
+  margin-top: 56px;
+}
+
+.metric,
+.card,
+.case-card,
+.info-panel,
+.contact-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+}
+
+.card::before,
+.case-card::before,
+.info-panel::before,
+.contact-panel::before {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(53, 199, 255, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(53, 199, 255, 0.22), rgba(255, 79, 216, 0.08)),
+    url("anchor-logo.svg") center / 74px auto no-repeat;
+  opacity: 0.34;
+  content: "";
+}
+
+.card > *,
+.case-card > *,
+.info-panel > *,
+.contact-panel > * {
+  position: relative;
+}
+
+.metric {
+  padding: 18px;
+}
+
+.metric strong {
+  display: block;
+  color: var(--text);
+  font-size: 23px;
+}
+
+.metric span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.section {
+  padding: 92px 0;
+}
+
+.section.alt {
+  background: rgba(255, 255, 255, 0.025);
+  border-block: 1px solid var(--line);
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.7fr);
+  gap: 36px;
+  align-items: end;
+  margin-bottom: 34px;
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+}
+
+.grid.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid.four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.card,
+.case-card,
+.info-panel,
+.contact-panel {
+  padding: 26px;
+}
+
+.card.kicker {
+  border-color: rgba(53, 199, 255, 0.35);
+}
+
+.card h3,
+.case-card h3 {
+  margin-bottom: 12px;
+}
+
+.platform-band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.65fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.platform-visual {
+  min-height: 360px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(5, 7, 13, 0.18), rgba(5, 7, 13, 0.92)),
+    url("ANCHOR_女性工程師機械上身_機房主視覺.png") center 35% / cover no-repeat;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.matrix {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.matrix-item {
+  min-height: 150px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(53, 199, 255, 0.08), rgba(12, 20, 38, 0.76));
+}
+
+.matrix-item strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-size: 18px;
+}
+
+.matrix-item span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.logo-wall {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.logo-tile {
+  display: grid;
+  min-height: 72px;
+  place-items: center;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(244, 248, 255, 0.05);
+  color: #dce8f7;
+  text-align: center;
+  font-weight: 800;
+}
+
+.cta-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 22px;
+  align-items: center;
+  padding: 34px;
+  border: 1px solid rgba(53, 199, 255, 0.32);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(53, 199, 255, 0.16), rgba(255, 79, 216, 0.08)),
+    rgba(12, 20, 38, 0.88);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  margin-bottom: 14px;
+  padding: 0 10px;
+  border: 1px solid rgba(53, 199, 255, 0.26);
+  border-radius: 999px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  position: relative;
+  padding-left: 22px;
+  color: #cbd8ea;
+}
+
+.list li::before {
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--blue);
+  box-shadow: 0 0 14px rgba(53, 199, 255, 0.65);
+  content: "";
+}
+
+.process {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.step {
+  min-height: 150px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(53, 199, 255, 0.08), rgba(255, 255, 255, 0.02));
+}
+
+.step span {
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.step h3 {
+  margin-top: 12px;
+  font-size: 19px;
+}
+
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 86px 0 58px;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, rgba(5, 7, 13, 0.96), rgba(8, 16, 29, 0.76)),
+    radial-gradient(circle at 90% 0%, rgba(53, 199, 255, 0.22), transparent 32rem);
+}
+
+.page-hero::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 7, 13, 0.98) 0%, rgba(5, 7, 13, 0.8) 48%, rgba(5, 7, 13, 0.24) 100%),
+    url("ANCHOR_女性工程師機械上身_機房主視覺.png") right 35% / auto 145% no-repeat;
+  opacity: 0.72;
+  content: "";
+}
+
+.page-hero::after {
+  position: absolute;
+  right: max(22px, calc((100vw - var(--max)) / 2));
+  bottom: 28px;
+  width: min(34vw, 310px);
+  aspect-ratio: 520 / 180;
+  background: url("anchor-logo.svg") center / contain no-repeat;
+  filter: drop-shadow(0 18px 34px rgba(25, 120, 255, 0.28));
+  opacity: 0.86;
+  content: "";
+}
+
+.page-hero .section-inner {
+  z-index: 1;
+}
+
+.page-hero h1 {
+  font-size: clamp(36px, 6vw, 64px);
+}
+
+.page-hero .lead {
+  max-width: 780px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(300px, 0.65fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.quote-panel {
+  position: relative;
+  overflow: hidden;
+  border-left: 3px solid var(--blue);
+  padding: 22px 24px;
+  background: rgba(53, 199, 255, 0.08);
+  color: #dce8f7;
+}
+
+.quote-panel::after {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: 76px;
+  margin-top: 24px;
+  background: url("anchor-logo.svg") left center / contain no-repeat;
+  opacity: 0.8;
+  content: "";
+}
+
+.visual-band {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-height: 220px;
+  background:
+    linear-gradient(90deg, rgba(5, 7, 13, 0.92), rgba(5, 7, 13, 0.3)),
+    url("ANCHOR_女性工程師機械上身_機房主視覺.png") right center / cover no-repeat;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+}
+
+.news-item,
+.insight-item {
+  display: grid;
+  gap: 8px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.news-item:first-child,
+.insight-item:first-child {
+  padding-top: 0;
+}
+
+.date {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.contact-form {
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+}
+
+.field label {
+  color: #dce8f7;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(5, 7, 13, 0.72);
+  color: var(--text);
+  font: inherit;
+  padding: 12px 13px;
+}
+
+.field textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: #03060b;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 28px;
+  width: min(var(--max), calc(100% - 40px));
+  margin: 0 auto;
+  padding: 44px 0;
+}
+
+.footer-title {
+  color: var(--text);
+  font-weight: 800;
+}
+
+.footer-links {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.footer-links a,
+.footer-inner p {
+  color: var(--muted);
+}
+
+.copyright {
+  border-top: 1px solid var(--line);
+  padding: 18px 0;
+  color: #75869c;
+  text-align: center;
+  font-size: 13px;
+}
+
+@media (max-width: 980px) {
+  .nav-toggle-label {
+    display: grid;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 74px;
+    right: 20px;
+    left: 20px;
+    display: none;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(5, 7, 13, 0.98);
+  }
+
+  .nav-toggle:checked ~ .main-nav {
+    display: grid;
+  }
+
+  .main-nav > a,
+  .dropdown > a {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static;
+    display: grid;
+    margin: 0 0 6px 12px;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .lang {
+    padding: 8px 11px;
+  }
+
+  .section-head,
+  .split,
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .grid.three,
+  .grid.two,
+  .grid.four,
+  .matrix,
+  .logo-wall,
+  .process {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .platform-band,
+  .cta-band {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .nav-wrap,
+  .hero-inner,
+  .section-inner,
+  .footer-inner {
+    width: min(100% - 28px, var(--max));
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero::before {
+    background:
+      linear-gradient(180deg, rgba(5, 7, 13, 0.48) 0%, rgba(5, 7, 13, 0.93) 48%, #05070d 100%),
+      url("ANCHOR_女性工程師機械上身_機房主視覺.png") center top / cover no-repeat;
+  }
+
+  .hero-inner {
+    align-items: end;
+    min-height: 780px;
+    padding-top: 330px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .lead {
+    font-size: 17px;
+  }
+
+  .hero-metrics,
+  .grid.three,
+  .grid.two,
+  .grid.four,
+  .matrix,
+  .logo-wall,
+  .process {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 68px 0;
+  }
+
+  .page-hero {
+    padding-bottom: 130px;
+  }
+
+  .page-hero::before {
+    background:
+      linear-gradient(180deg, rgba(5, 7, 13, 0.62), rgba(5, 7, 13, 0.96)),
+      url("ANCHOR_女性工程師機械上身_機房主視覺.png") center top / cover no-repeat;
+  }
+
+  .page-hero::after {
+    right: 14px;
+    bottom: 22px;
+    width: min(72vw, 260px);
+  }
+
+  .hero-actions,
+  .actions {
+    display: grid;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
